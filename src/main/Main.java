@@ -9,10 +9,10 @@ package main;
  *
  * @author Tyler
  */
-//**********************************************************
+//*****************************************************************
 // Main.java     Author: Tyler Davies
-// This program computes the area and circumference of a circle.
-//**********************************************************
+// This program computes the area and circumference using Circle class.
+//*****************************************************************
 
 import java.util.Scanner;
 import java.text.DecimalFormat;
@@ -20,25 +20,24 @@ import java.text.DecimalFormat;
 public class Main
 {
     //------------------------------------------------------
-    // defines variables
-    // call helper methods to input the radius
-    // call helper method to calculate the circumference
-    // call helper method to calculate the area
-    // output the calculated values
+    // define Circle object
+    // call helper (class) method to input the radius
+    // instantiate the Circle object
+    // output the circumference using instance method
+    // output the area using instance method
     //------------------------------------------------------
     public static void main (String[] args)
     {
-        double radius, circumference, area;
+        double radius;      //prompt says to define Circle object, but just need radius right now
         radius = getRadius();
-        circumference = calcCirc(radius);
-        area = calcArea(radius);
+        Circle c = new Circle(radius);
         DecimalFormat fmt = new DecimalFormat ("0.##");     //sets decimal to two after point
-        System.out.println("The circumference of the circle is: " + fmt.format(circumference));
-        System.out.println("The area of the circle is: " + fmt.format(area));
+        System.out.println("The circumference of the circle is: " + fmt.format(c.getCircumference()));
+        System.out.println("The area of the circle is: " + fmt.format(c.getArea()));
     }
     
     //------------------------------------------------------
-    // define a local radius variable    
+    // define a local radius variable
     // read in a value for radius
     // return the value
     //------------------------------------------------------
@@ -49,27 +48,5 @@ public class Main
         System.out.print("Enter the radius of the circle: ");
         circleRadius = scan.nextDouble();
         return circleRadius;
-    }
-    
-    //------------------------------------------------------
-    // calculate and return value for the circumference
-    // using the radius passed as an argument
-    //------------------------------------------------------
-    public static double calcCirc(double circleRadius)
-    {
-        double circleCircumference;
-        circleCircumference = 2 * Math.PI * circleRadius;
-        return circleCircumference;
-    }
-    
-    //------------------------------------------------------
-    // calculate and return value for the area
-    // using the radius passed as an argument
-    //------------------------------------------------------
-    public static double calcArea(double circleRadius)
-    {
-        double circleArea;
-        circleArea = Math.PI * Math.pow(circleRadius, 2.0);
-        return circleArea;
     }
 }
